@@ -169,7 +169,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col font-sans text-stone-900">
+    <div className="min-h-screen bg-[#faf9f6] flex flex-col font-sans text-stone-900">
       {/* 2-Minute Demo Navigator Toolbar */}
       <DemoTourBar
         currentStep={demoStep}
@@ -294,14 +294,14 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="bg-white border-t border-stone-200 py-6 text-center text-xs text-stone-500">
+      <footer className="bg-white/70 border-t border-stone-200/80 py-5 text-center text-xs text-stone-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center space-x-2 font-serif font-bold text-stone-900">
             <span>🏺 CraftConnect</span>
             <span className="font-normal font-sans text-stone-400">| AI B2B Capability Linkage</span>
           </div>
           <div className="text-stone-500">
-            "Connecting what artisans can produce with what businesses actually need."
+            Connecting what artisans can produce with what businesses actually need.
           </div>
           <div className="text-stone-400 text-[11px]">
             Hackathon MVP • Demo-Ready Prototype

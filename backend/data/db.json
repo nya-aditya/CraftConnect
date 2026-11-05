@@ -199,11 +199,76 @@
       "customization_spec": "Laser or stamped logo of Rajasthan Cafe Group",
       "deadline_days": 20,
       "delivery_location": "Jaipur, Rajasthan",
-      "status": "MATCHED",
+      "status": "CONFIRMED",
       "created_at": "2026-11-05T14:05:01.700Z",
       "matched_count": 2
     }
   ],
-  "quotations": [],
-  "orders": []
+  "quotations": [
+    {
+      "id": "quote_1793895716935",
+      "status": "ACCEPTED",
+      "created_at": "2026-11-05T16:21:56.935Z",
+      "requirement_id": "req_demo_1",
+      "buyer_id": "buyer_1",
+      "buyer_name": "Rajasthan Cafe Group",
+      "artisan_id": "artisan_1",
+      "artisan_name": "Meera Handicrafts",
+      "product_id": "prod_1",
+      "product_name": "Terracotta Cups",
+      "quantity": 200,
+      "unit_price": 120,
+      "total_amount": 24000,
+      "delivery_days": 15,
+      "customization_notes": "Will emboss Rajasthan Cafe Group emblem on the base of each cup using custom brass stamp.",
+      "artisan_message": "We have 50 units already cured in our Jaipur workshop. We will shape, glaze and kiln-fire the remaining 150 units over 12 days."
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_1793895733947",
+      "status": "CONFIRMED",
+      "order_number": "CC-401637",
+      "created_at": "2026-11-05T16:22:13.947Z",
+      "quotation_id": "quote_1793895716935",
+      "requirement_id": "req_demo_1",
+      "buyer_id": "buyer_1",
+      "buyer_name": "Rajasthan Cafe Group",
+      "artisan_id": "artisan_1",
+      "artisan_name": "Meera Handicrafts",
+      "product_name": "Terracotta Cups",
+      "quantity": 200,
+      "unit_price": 120,
+      "total_amount": 24000,
+      "delivery_days": 15,
+      "customization_agreed": "Will emboss Rajasthan Cafe Group emblem on the base of each cup using custom brass stamp.",
+      "milestones": [
+        {
+          "name": "Order Placed & Escrow Allocated",
+          "status": "COMPLETED",
+          "date": "11/5/2026"
+        },
+        {
+          "name": "Raw Material Preparation & Shaping",
+          "status": "IN_PROGRESS",
+          "target_days": "Day 1-4"
+        },
+        {
+          "name": "Kiln Firing & Custom Stamping",
+          "status": "SCHEDULED",
+          "target_days": "Day 5-10"
+        },
+        {
+          "name": "B2B Quality Inspection & Eco-Packaging",
+          "status": "SCHEDULED",
+          "target_days": "Day 11-14"
+        },
+        {
+          "name": "Cluster Dispatch to Jaipur Cafe Hub",
+          "status": "SCHEDULED",
+          "target_days": "Day 15"
+        }
+      ]
+    }
+  ]
 }

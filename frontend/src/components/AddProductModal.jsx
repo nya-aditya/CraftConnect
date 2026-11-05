@@ -4,7 +4,7 @@ import { api } from '../api';
 
 const SAMPLE_PRESETS = [
   {
-    label: "☕ Handmade Terracotta Cup",
+    label: "Handmade Terracotta Cup",
     name: "Handmade terracotta cup",
     description: "Handmade terracotta cup. I can make 300 per month. Food safe natural clay.",
     material: "Terracotta",
@@ -15,7 +15,7 @@ const SAMPLE_PRESETS = [
     image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
   },
   {
-    label: "🏺 Traditional Clay Pitcher",
+    label: "Traditional Clay Pitcher",
     name: "Natural Clay Water Matka / Jug",
     description: "Handcrafted unglazed terracotta water jug with natural cooling properties.",
     material: "Terracotta Clay",
@@ -41,7 +41,7 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
 
   // Speech simulation state
   const [isRecording, setIsRecording] = useState(false);
-  const [speechLang, setSpeechLang] = useState('hi-IN'); // 'hi-IN' or 'en-IN'
+  const [speechLang, setSpeechLang] = useState('hi-IN');
 
   // AI Generation State
   const [isGenerating, setIsGenerating] = useState(false);
@@ -61,7 +61,6 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
   // Toggle Voice Input
   const handleToggleVoice = () => {
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-      // Fallback: simulate voice capture
       setIsRecording(true);
       setTimeout(() => {
         setIsRecording(false);
@@ -184,35 +183,35 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 backdrop-blur-sm p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-3xl w-full border border-stone-200 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/50 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl max-w-2xl w-full border border-stone-200/90 shadow-2xl overflow-hidden my-8 max-h-[90vh] flex flex-col">
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-stone-900 text-white flex items-center justify-between border-b border-stone-800">
-          <div className="flex items-center space-x-2">
-            <Sparkles className="w-5 h-5 text-amber-400" />
-            <div>
-              <h2 className="font-bold text-base font-serif">Add Product & Generate AI B2B Catalog</h2>
-              <p className="text-[11px] text-stone-400">Speech-to-Catalog with Multilingual AI Assistance</p>
-            </div>
+        <div className="px-6 py-4 bg-white border-b border-stone-200/80 flex items-center justify-between">
+          <div>
+            <h2 className="font-bold text-base font-serif text-stone-900">Add Product & Generate AI Catalog</h2>
+            <p className="text-[11px] text-stone-500">Multilingual AI-assisted digital capability profiling</p>
           </div>
-          <button onClick={onClose} className="p-1 rounded-lg hover:bg-stone-800 text-stone-400 hover:text-white transition">
+          <button
+            onClick={onClose}
+            className="p-1 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition"
+          >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1 text-xs">
+        <div className="p-6 overflow-y-auto space-y-5 flex-1 text-xs">
           {/* Preset Buttons */}
-          <div className="bg-amber-50/70 border border-amber-200 p-3 rounded-xl flex flex-wrap items-center justify-between gap-2">
-            <span className="text-[11px] font-semibold text-amber-900">
-              ⚡ Quick 1-Click Demo Fill:
+          <div className="bg-stone-50 border border-stone-200/70 p-3 rounded-xl flex flex-wrap items-center justify-between gap-2">
+            <span className="text-[11px] font-medium text-stone-600">
+              Quick 1-Click Demo Fill:
             </span>
             <div className="flex gap-2">
               {SAMPLE_PRESETS.map((p, idx) => (
                 <button
                   key={idx}
                   onClick={() => applyPreset(p)}
-                  className="px-2.5 py-1 bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-lg font-medium transition text-[11px]"
+                  className="px-2.5 py-1 bg-white hover:bg-stone-100 text-stone-800 border border-stone-200 rounded-lg text-[11px] font-medium transition shadow-subtle"
                 >
                   {p.label}
                 </button>
@@ -220,27 +219,27 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
             </div>
           </div>
 
-          {/* Section 1: Artisan Simple Input */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Product basic details */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">Product Draft Name</label>
+              <label className="font-medium text-stone-700 block mb-1">Product Draft Name</label>
               <input
                 type="text"
                 value={productName}
                 onChange={(e) => setProductName(e.target.value)}
                 placeholder="e.g. Handmade terracotta cup"
-                className="w-full px-3 py-2 border border-stone-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="w-full px-3 py-2 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-700/20 focus:border-amber-700 focus:outline-none text-xs"
               />
             </div>
 
             <div>
-              <label className="font-semibold text-stone-700 block mb-1">Primary Craft Material</label>
+              <label className="font-medium text-stone-700 block mb-1">Primary Craft Material</label>
               <input
                 type="text"
                 value={material}
                 onChange={(e) => setMaterial(e.target.value)}
                 placeholder="e.g. Terracotta / Red Clay"
-                className="w-full px-3 py-2 border border-stone-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none"
+                className="w-full px-3 py-2 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-700/20 focus:border-amber-700 focus:outline-none text-xs"
               />
             </div>
           </div>
@@ -248,12 +247,12 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
           {/* Voice & Description */}
           <div>
             <div className="flex items-center justify-between mb-1">
-              <label className="font-semibold text-stone-700">Artisan Product Description or Voice Note</label>
+              <label className="font-medium text-stone-700">Artisan Description or Voice Note</label>
               <div className="flex items-center gap-2">
                 <select
                   value={speechLang}
                   onChange={(e) => setSpeechLang(e.target.value)}
-                  className="text-[11px] border border-stone-200 rounded px-1.5 py-0.5 bg-stone-50 text-stone-600"
+                  className="text-[11px] border border-stone-200 rounded-lg px-2 py-0.5 bg-stone-50 text-stone-600"
                 >
                   <option value="hi-IN">Hindi (हिंदी)</option>
                   <option value="en-IN">English</option>
@@ -261,14 +260,14 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
                 <button
                   type="button"
                   onClick={handleToggleVoice}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1 transition ${
+                  className={`px-2 py-1 rounded-lg text-[11px] font-medium flex items-center gap-1 transition ${
                     isRecording
-                      ? 'bg-rose-600 text-white animate-pulse'
+                      ? 'bg-rose-50 text-rose-700 border border-rose-200 animate-pulse'
                       : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
                   }`}
                 >
-                  {isRecording ? <MicOff className="w-3 h-3" /> : <Mic className="w-3 h-3 text-amber-600" />}
-                  <span>{isRecording ? 'Listening...' : 'Speak (Voice Input)'}</span>
+                  {isRecording ? <MicOff className="w-3 h-3 text-rose-600" /> : <Mic className="w-3 h-3 text-amber-800" />}
+                  <span>{isRecording ? 'Listening...' : 'Voice Input'}</span>
                 </button>
               </div>
             </div>
@@ -276,226 +275,169 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
               rows={2}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Speak or type what you make, e.g. Handmade terracotta cup. I can make 300 per month."
-              className="w-full px-3 py-2 border border-stone-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:outline-none"
+              placeholder="Speak or type what you make..."
+              className="w-full px-3 py-2 border border-stone-200 rounded-xl focus:ring-2 focus:ring-amber-700/20 focus:border-amber-700 focus:outline-none text-xs leading-relaxed"
             />
           </div>
 
-          {/* Image & Key Capability Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-stone-50 p-4 rounded-xl border border-stone-200">
+          {/* Capability Metrics */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-[#faf9f6] p-4 rounded-xl border border-stone-200/70">
             <div>
-              <label className="text-[11px] font-semibold text-stone-600 block mb-1">Available Now</label>
+              <label className="text-[10px] font-medium text-stone-500 uppercase tracking-wider block mb-1">Available Now</label>
               <input
                 type="number"
                 value={availableNow}
                 onChange={(e) => setAvailableNow(e.target.value)}
-                className="w-full px-2.5 py-1.5 border border-stone-300 rounded-lg text-xs"
+                className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs bg-white"
               />
-              <span className="text-[10px] text-stone-500">Ready in stock</span>
+              <span className="text-[10px] text-stone-400">Ready in stock</span>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-stone-600 block mb-1">Monthly Capacity</label>
+              <label className="text-[10px] font-medium text-stone-500 uppercase tracking-wider block mb-1">Monthly Capacity</label>
               <input
                 type="number"
                 value={monthlyCapacity}
                 onChange={(e) => setMonthlyCapacity(e.target.value)}
-                className="w-full px-2.5 py-1.5 border border-stone-300 rounded-lg text-xs font-bold text-amber-800"
+                className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs font-semibold text-stone-900 bg-white"
               />
-              <span className="text-[10px] text-stone-500">Units / month</span>
+              <span className="text-[10px] text-stone-400">Units / month</span>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-stone-600 block mb-1">Min Order (MOQ)</label>
+              <label className="text-[10px] font-medium text-stone-500 uppercase tracking-wider block mb-1">MOQ</label>
               <input
                 type="number"
                 value={moq}
                 onChange={(e) => setMoq(e.target.value)}
-                className="w-full px-2.5 py-1.5 border border-stone-300 rounded-lg text-xs"
+                className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs bg-white"
               />
-              <span className="text-[10px] text-stone-500">Minimum units</span>
+              <span className="text-[10px] text-stone-400">Min order</span>
             </div>
 
             <div>
-              <label className="text-[11px] font-semibold text-stone-600 block mb-1">Indicative Price</label>
+              <label className="text-[10px] font-medium text-stone-500 uppercase tracking-wider block mb-1">Indicative Price</label>
               <div className="relative">
                 <span className="absolute left-2 top-1.5 text-stone-400">₹</span>
                 <input
                   type="number"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
-                  className="w-full pl-5 pr-2 py-1.5 border border-stone-300 rounded-lg text-xs font-bold text-stone-900"
+                  className="w-full pl-5 pr-2 py-1.5 border border-stone-200 rounded-lg text-xs font-semibold text-stone-900 bg-white"
                 />
               </div>
-              <span className="text-[10px] text-stone-500">Per unit (INR)</span>
+              <span className="text-[10px] text-stone-400">Per unit</span>
             </div>
           </div>
 
-          {/* AI Trigger Button */}
-          <div className="text-center pt-2">
+          {/* AI Trigger */}
+          <div className="text-center pt-1">
             <button
               onClick={handleGenerateAiCatalog}
               disabled={isGenerating}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-amber-600 to-terracotta-600 hover:from-amber-700 hover:to-terracotta-700 text-white font-bold shadow-md flex items-center justify-center gap-2 mx-auto transition"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-100 font-medium shadow-subtle flex items-center justify-center gap-2 mx-auto transition"
             >
               {isGenerating ? (
                 <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin text-stone-400" />
                   <span>AI Generating B2B Catalog...</span>
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4 text-amber-200" />
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Generate AI Catalog & B2B Specs</span>
                 </>
               )}
             </button>
           </div>
 
-          {/* SECTION 2: AI CATALOG RESULT & EDITABLE SPECIFICATIONS */}
+          {/* AI Output Section */}
           {aiCatalog && (
-            <div className="border-2 border-amber-400 bg-amber-50/30 rounded-2xl p-5 space-y-4 animate-fadeIn">
-              {/* Badge & Mode Switcher */}
-              <div className="flex items-center justify-between pb-3 border-b border-amber-200">
+            <div className="border border-stone-200 bg-[#faf9f6] rounded-2xl p-4 space-y-4 animate-fadeIn">
+              <div className="flex items-center justify-between pb-2.5 border-b border-stone-200">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-amber-500 text-stone-950 flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5" /> AI Generated Catalog
+                  <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">
+                    AI Generated
                   </span>
-                  <span className="text-[10px] text-stone-500">
+                  <span className="text-[10px] text-stone-400">
                     Engine: {aiCatalog.ai_provider || "Gemini Flash"}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setIsEditingAi(!isEditingAi)}
-                  className="text-amber-800 font-semibold text-xs hover:underline flex items-center gap-1"
+                  className="text-stone-600 font-medium text-xs hover:text-stone-900"
                 >
                   {isEditingAi ? "Done Editing" : "✎ Edit AI Output"}
                 </button>
               </div>
 
-              {/* Multilingual Missing Info Question Concept (SIH) */}
+              {/* Multilingual Missing Info */}
               {!missingAnswered && aiCatalog.missing_info_prompt && (
-                <div className="bg-white border-2 border-blue-400 rounded-xl p-4 shadow-sm">
-                  <div className="flex items-start gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 font-bold">
-                      ?
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-[10px] uppercase font-bold text-blue-800 tracking-wider">
-                        AI Follow-up Question (Missing Information)
-                      </div>
-                      <p className="text-xs font-bold text-stone-900 mt-1">
-                        "{aiCatalog.missing_info_prompt.question_hi}"
-                      </p>
-                      <p className="text-[11px] text-stone-500 italic mt-0.5">
-                        "{aiCatalog.missing_info_prompt.question_en}"
-                      </p>
+                <div className="bg-white border border-stone-200 rounded-xl p-3.5 shadow-subtle">
+                  <div className="text-[10px] uppercase font-bold text-stone-400 tracking-wider">
+                    AI Follow-up Question
+                  </div>
+                  <p className="text-xs font-semibold text-stone-900 mt-1">
+                    "{aiCatalog.missing_info_prompt.question_hi}"
+                  </p>
+                  <p className="text-[11px] text-stone-500 italic mt-0.5">
+                    "{aiCatalog.missing_info_prompt.question_en}"
+                  </p>
 
-                      {/* Quick Answer Options */}
-                      <div className="flex flex-wrap gap-2 mt-3">
-                        {aiCatalog.missing_info_prompt.options.map((opt, oIdx) => (
-                          <button
-                            key={oIdx}
-                            type="button"
-                            onClick={() => handleAnswerMissingPrompt(opt)}
-                            className="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 text-xs font-medium transition text-left"
-                          >
-                            + {opt}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="flex flex-wrap gap-1.5 mt-2.5">
+                    {aiCatalog.missing_info_prompt.options.map((opt, oIdx) => (
+                      <button
+                        key={oIdx}
+                        type="button"
+                        onClick={() => handleAnswerMissingPrompt(opt)}
+                        className="px-2.5 py-1 rounded-lg bg-stone-50 hover:bg-stone-100 text-stone-800 border border-stone-200 text-xs font-medium transition text-left"
+                      >
+                        + {opt}
+                      </button>
+                    ))}
                   </div>
                 </div>
               )}
 
-              {/* Editable Fields Grid */}
-              <div className="space-y-3 bg-white p-4 rounded-xl border border-amber-200">
+              {/* Editable Fields */}
+              <div className="space-y-3 bg-white p-3.5 rounded-xl border border-stone-200/80">
                 <div>
-                  <label className="font-semibold text-stone-700 block mb-1">Commercial B2B Product Title</label>
+                  <label className="font-medium text-stone-700 block mb-1">Commercial B2B Product Title</label>
                   <input
                     type="text"
                     value={editedName}
                     onChange={(e) => setEditedName(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-xs font-bold text-stone-900"
+                    className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs font-semibold text-stone-900"
                   />
                 </div>
 
                 <div>
-                  <label className="font-semibold text-stone-700 block mb-1">Professional B2B Pitch</label>
+                  <label className="font-medium text-stone-700 block mb-1">Professional B2B Pitch</label>
                   <textarea
-                    rows={3}
+                    rows={2}
                     value={editedDesc}
                     onChange={(e) => setEditedDesc(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-xs leading-relaxed"
+                    className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs leading-relaxed"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="font-semibold text-stone-700 block mb-1">Material Standard</label>
-                    <input
-                      type="text"
-                      value={editedMaterial}
-                      onChange={(e) => setEditedMaterial(e.target.value)}
-                      className="w-full px-2.5 py-1.5 border border-stone-300 rounded-lg text-xs"
-                    />
-                  </div>
-                  <div>
-                    <label className="font-semibold text-stone-700 block mb-1">B2B Category</label>
-                    <input
-                      type="text"
-                      value={editedCategory}
-                      onChange={(e) => setEditedCategory(e.target.value)}
-                      className="w-full px-2.5 py-1.5 border border-stone-300 rounded-lg text-xs"
-                    />
-                  </div>
-                </div>
-
-                {/* Customization Details */}
                 <div>
-                  <label className="font-semibold text-stone-700 block mb-1">Customization Capabilities for Bulk Buyers</label>
+                  <label className="font-medium text-stone-700 block mb-1">Customization Capabilities for Bulk Buyers</label>
                   <input
                     type="text"
                     value={editedCustomization}
                     onChange={(e) => setEditedCustomization(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-xs font-medium text-emerald-900 bg-emerald-50/50"
+                    className="w-full px-2.5 py-1.5 border border-stone-200 rounded-lg text-xs"
                   />
                 </div>
-
-                {/* Tags */}
-                <div>
-                  <label className="font-semibold text-stone-700 block mb-1">B2B Search Tags (Comma separated)</label>
-                  <input
-                    type="text"
-                    value={editedTags}
-                    onChange={(e) => setEditedTags(e.target.value)}
-                    className="w-full px-3 py-1.5 border border-stone-300 rounded-lg text-xs"
-                  />
-                </div>
-
-                {/* Generated Technical Specs Display */}
-                {aiCatalog.specifications && (
-                  <div>
-                    <label className="font-semibold text-stone-700 block mb-1">Generated Technical Specs</label>
-                    <div className="grid grid-cols-2 gap-2 bg-stone-50 p-3 rounded-lg border border-stone-200">
-                      {Object.entries(aiCatalog.specifications).map(([k, v], idx) => (
-                        <div key={idx} className="text-[11px]">
-                          <span className="text-stone-500 font-medium">{k}: </span>
-                          <span className="text-stone-800 font-semibold">{v}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           )}
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between">
+        <div className="px-6 py-4 bg-stone-50/80 border-t border-stone-200/80 flex items-center justify-between">
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl text-stone-600 hover:text-stone-900 font-medium text-xs transition"
@@ -506,14 +448,13 @@ export default function AddProductModal({ artisan, onClose, onProductCreated }) 
           <button
             onClick={handleConfirmAndPublish}
             disabled={!productName}
-            className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm flex items-center gap-1.5 transition disabled:opacity-50"
+            className="px-5 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-semibold text-xs shadow-sm flex items-center gap-1.5 transition disabled:opacity-50"
           >
             <Check className="w-4 h-4" />
-            <span>Confirm & Publish to Capability Profile</span>
+            <span>Confirm & Publish to Profile</span>
           </button>
         </div>
       </div>
     </div>
   );
 }
-
